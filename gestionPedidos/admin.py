@@ -1,8 +1,12 @@
 from django.contrib import admin
 from gestionPedidos.models import Clientes, Articulos, Pedidos
 
-# Register your models here.
+# CREAR VISTAS PERSONALIZADAS PARA EL PANEL DE ADMINISTRACIÓN.
+class panelClientes(admin.ModelAdmin):
+    list_display=('nombre', 'email', 'tfno')
 
-admin.site.register(Clientes)
+
+# Register your models here Y LAS VISTAS PERSONALIZADAS DEL /ADMIN
+admin.site.register(Clientes, panelClientes)
 admin.site.register(Articulos)
 admin.site.register(Pedidos)

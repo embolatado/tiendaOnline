@@ -8,10 +8,14 @@ class Clientes(models.Model):
     email = models.EmailField()
     tfno = models.CharField(max_length=9)
 
+
 class Articulos(models.Model):
-    nombre = models.CharField(max_length=30)
-    seccion = models.CharField(max_length=20)
-    precio = models.IntegerField()
+  nombre = models.CharField(max_length=30)
+  seccion = models.CharField(max_length=20)
+  precio = models.IntegerField()
+
+  def __str__(self):
+    return 'El artículo %s de la sección %s cuesta %s€' % (self.nombre, self.seccion, self.precio)
 
 class Pedidos(models.Model):
     numero = models.IntegerField()

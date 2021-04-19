@@ -9,6 +9,9 @@ def busqueda_productos(request):
 
 # VISTA DEL RESULTADO
 def resultado_busqueda(request):
-    mensaje = "Artículo buscado: %r" %request.GET["prd"]
-
+    
+    if request.GET["prd"]:
+        mensaje = "Artículo buscado: %r" % request.GET["prd"]
+    else:
+        mensaje = "No has escrito nada."
     return HttpResponse(mensaje)

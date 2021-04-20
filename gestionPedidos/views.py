@@ -28,3 +28,11 @@ def resultado_busqueda(request):
         mensaje = "No has escrito nada."
     
     return HttpResponse(mensaje)
+
+
+def form_contacto(request):
+
+    if request.method == "POST":
+        return render(request, "test_metodo.html")
+    
+    return render(request, "contactenos.html")

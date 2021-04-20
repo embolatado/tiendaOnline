@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Resultado Búsqueda</title>
+</head>
+
+<body>
+    <p>Estás buscando: <strong>{{consulta}}</strong></p>
+
+    <!-- CASO EXISTEN ARTÍCULOS else -->
+    {% if arts %}
+    <p>Artículos encontrados: {{arts|length}} artículos.</p>
+
+    <!-- RECORRER LA LISTA MOSTRAR ÍTEMS -->
+    <ul>
+        {% for articulo in articulos %}
+        <li>
+            {{articulo.nombre}}
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+
+    <p>No se han encontrado artículos.</p>
+
+    {% endif %}
+
+</body>
+</html>

@@ -22,4 +22,5 @@ urlpatterns = [
     path('buscador/', views.busqueda_productos),
     path('resultados/', views.resultado_busqueda),
     path('contacto/', views.form_contacto),
+    path('test_temp/', views.test_plantillas),
 ]

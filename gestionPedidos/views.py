@@ -36,3 +36,8 @@ def form_contacto(request):
         return render(request, "gracias.html")
     
     return render(request, "contactenos.html")
+
+
+def test_plantillas(request):
+    
+    return render(request, 'prueba_plantillas.html')

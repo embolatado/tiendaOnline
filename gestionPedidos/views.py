@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from gestionPedidos.models import Articulos
 
+from django.core.mail import send_mail
+from django.conf import settings
+
 # Create your views here.
 
 # VISTA DEL BUSCADOR
@@ -32,7 +35,16 @@ def resultado_busqueda(request):
 
 def form_contacto(request):
 
-    if request.method == "POST":
+    if request.method == 'POST':
+
+        # CREACIÓN VARIABLES PARA Forms
+        betreff = request.POST['asunto']
+        nachricht = request.POST['mensajecntc'] + " " + request.POST['emailcntc']
+
+        email_desde = settings.EMAIL_HOST_USER
+        email_para = ['shhittybikes@gmail.com']
+        send_mail(betreff, nachricht, email_desde, email_para)
+    
         return render(request, "gracias.html")
     
     return render(request, "contactenos.html")

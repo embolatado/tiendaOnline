@@ -13,7 +13,6 @@ class Clientes(models.Model):
       return self.nombre
 
 
-
 class Articulos(models.Model):
   nombre = models.CharField(max_length=30)
   seccion = models.CharField(max_length=20)
@@ -21,6 +20,7 @@ class Articulos(models.Model):
 
   def __str__(self):
     return 'El artículo %s de la sección %s cuesta %s€' % (self.nombre, self.seccion, self.precio)
+
 
 class Pedidos(models.Model):
     numero = models.IntegerField()

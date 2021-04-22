@@ -4,6 +4,7 @@ from gestionPedidos.models import Articulos
 
 from django.core.mail import send_mail
 from django.conf import settings
+from gestionPedidos.forms import formulario_contacto
 
 # Create your views here.
 
@@ -36,6 +37,27 @@ def resultado_busqueda(request):
 def form_contacto(request):
 
     if request.method == 'POST':
+        
+        el_formulario = formulario_contacto(request.POST)
+
+        if el_formulario.is_valid():
+            
+            inform = el_formulario.cleaned_data
+
+            send_mail(inform['camp_asunto'], inform['camp_mensaj'],
+            inform.get('camp_correo', ''), ['shhittybikes@gmail.com'],)
+
+            return render(request, "gracias.html")
+        
+    else:
+
+        el_formulario = formulario_contacto()
+        
+    return render(request, 'formulario_contacto.html', {'formulario': el_formulario})
+
+
+""" CONSTRUCIÓN ANTERIOR COMENTADA
+    if request.method == 'POST':
 
         # CREACIÓN VARIABLES PARA Forms
         betreff = request.POST['asunto']
@@ -48,7 +70,7 @@ def form_contacto(request):
         return render(request, "gracias.html")
     
     return render(request, "contactenos.html")
-
+"""
 
 def test_plantillas(request):
     

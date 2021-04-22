@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Formulario de contacto usando API Forms</title>
+</head>
+
+<body>
+    <h2>Contáctanos (Vista usando API Forms)</h2>
+
+    {% if formulario.errors %}
+        <p style="color: red;">Revise este campo, sonso.</p>
+    {% endif %}
+
+    <form action="" method="POST">{% csrf_token %}
+        <table>
+            {{ formulario.as_table}}
+        </table>
+        <input type="submit" value="Enviar">
+    </form>
+
+</body>
+</html>
